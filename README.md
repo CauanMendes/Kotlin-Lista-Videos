@@ -21,22 +21,27 @@ O aplicativo utiliza **tema escuro e tema claro**, proporcionando uma interface 
 ### Tema Claro em Português
 
 #### Tela 1
+
 <p align="center">
   <img src="Tela1Branco.png" width="300" alt="Tela Principal Tema Claro">
 </p>
 
 #### Tela 2
+
 <p align="center">
   <img src="Tela2Branco.png" width="300" alt="Tela Detalhes Tema Claro">
 </p>
 
 ### Tema Escuro em Inglês
+
 #### Tela 1
+
 <p align="center">
   <img src="Tela1Black.png" width="300" alt="Tela Principal Tema Escuro">
 </p>
 
 #### Tela 2
+
 <p align="center">
   <img src="Tela2Black.png" width="300" alt="Tela Detalhes Tema Escuro">
 </p>
