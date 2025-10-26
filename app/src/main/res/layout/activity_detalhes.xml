@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/imgThumbnail"
+            android:layout_width="360dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="Thumbnail do vídeo" />
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Título do vídeo"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvCanal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do Canal"
+            android:textSize="16sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvDuracao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10:00"
+            android:textSize="15sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/tvDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descrição do vídeo..."
+            android:textSize="15sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginBottom="24dp" />
+
+        <Button
+            android:id="@+id/btnAssistir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnassistir"
+            android:backgroundTint="@color/itemBackground"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnVoltar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btnvoltar"
+            android:backgroundTint="@color/itemBackground"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary" />
+    </LinearLayout>
+</ScrollView>
