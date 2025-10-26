@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    android:padding="16dp"
+    android:padding="0dp"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,7 +15,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.2"
         android:text="@string/titulo"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/textPrimary"
         android:gravity="center"
@@ -29,7 +29,7 @@
         android:divider="@color/dividerColor"
         android:dividerHeight="2dp"
         android:background="@color/itemBackground"
-        android:elevation="6dp"
-        android:padding="8dp"
+        android:elevation="0dp"
+        android:padding="0dp"
         android:listSelector="@color/listSelector" />
 </LinearLayout>

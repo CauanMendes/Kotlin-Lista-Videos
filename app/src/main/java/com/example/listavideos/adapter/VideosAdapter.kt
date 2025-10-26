@@ -2,13 +2,13 @@ package com.example.listavideos.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.listavideos.databinding.ItemVideoBinding
 import com.example.listavideos.model.Videos
+import com.example.listavideos.ui.DetalhesActivity // ajuste o pacote conforme o nome real da pasta
 
 class VideosAdapter(
     context: Context,
@@ -35,9 +35,16 @@ class VideosAdapter(
         binding.tvDuracao.text = video.duracao
         binding.tvDescricao.text = video.descricao
 
-        // Ao clicar no item, abre o vídeo no YouTube
+        // Clique no item → abre a página de detalhes com os dados do vídeo
         itemView.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(video.url))
+            val intent = Intent(context, DetalhesActivity::class.java)
+            intent.putExtra("thumbnail", video.thumbnail)
+            intent.putExtra("titulo", video.titulo)
+            intent.putExtra("canal", video.canal)
+            intent.putExtra("duracao", video.duracao)
+            intent.putExtra("descricao", video.descricao)
+            intent.putExtra("url", video.url)
+
             context.startActivity(intent)
         }
 
