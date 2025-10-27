@@ -48,6 +48,16 @@ O aplicativo utiliza **tema escuro e tema claro**, proporcionando uma interface 
 
 ---
 
+## 🎬 Demonstração do Projeto
+
+<p align="center">
+  <a href="https://youtube.com/shorts/GG-kKUkdDJE">
+    <img src="https://img.youtube.com/vi/GG-kKUkdDJE/hqdefault.jpg" alt="Demonstração do projeto no YouTube" width="400">
+  </a>
+</p>
+
+---
+
 ## 🛠️ Tecnologias utilizadas
 - Kotlin  
 - Android Studio  
