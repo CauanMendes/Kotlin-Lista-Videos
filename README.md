@@ -23,19 +23,19 @@ O aplicativo utiliza **tema escuro e tema claro**, proporcionando uma interface 
 #### Tela 1
 
 <p align="center">
-  <img src="/telas/PrincipalWhite.png" width="300" alt="Tela Principal Tema Claro">
+  <img src="./telas/PrincipalWhite.png" width="300" alt="Tela Principal Tema Claro">
 </p>
 
 #### Tela 2
 
 <p align="center">
-  <img src="/telas/DetalhesWhite.png" width="300" alt="Tela Detalhes Tema Claro">
+  <img src="./telas/DetalhesWhite.png" width="300" alt="Tela Detalhes Tema Claro">
 </p>
 
 #### Tela 3
 
 <p align="center">
-  <img src="CadastroWhite.png" width="300" alt="Tela Cadastros Tema Claro">
+  <img src="./telas/CadastroWhite.png" width="300" alt="Tela Cadastros Tema Claro">
 </p>
 
 ### Tema Escuro em Português
@@ -43,19 +43,19 @@ O aplicativo utiliza **tema escuro e tema claro**, proporcionando uma interface 
 #### Tela 1
 
 <p align="center">
-  <img src="/telas/PrincipalBlack.png" width="300" alt="Tela Principal Tema Escuro">
+  <img src="./telas/PrincipalBlack.png" width="300" alt="Tela Principal Tema Escuro">
 </p>
 
 #### Tela 2
 
 <p align="center">
-  <img src="/telas/DetalhesBlack.png" width="300" alt="Tela Detalhes Tema Escuro">
+  <img src="./telas/DetalhesBlack.png" width="300" alt="Tela Detalhes Tema Escuro">
 </p>
 
 #### Tela 3
 
 <p align="center">
-  <img src="/telas/CadastroBlack.png" width="300" alt="Tela Cadastro Tema Escuro">
+  <img src="./telas/CadastroBlack.png" width="300" alt="Tela Cadastro Tema Escuro">
 </p>
 
 ---
