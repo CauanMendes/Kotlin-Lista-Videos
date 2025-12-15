@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="12dp"
+    android:padding="4dp"
     android:background="@color/itemBackground"
     android:clickable="true"
     android:focusable="true">
@@ -22,9 +22,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="12dp" />
+        android:layout_marginEnd="24dp" />
 
     <!-- Título -->
+
     <TextView
         android:id="@+id/tvTitulo"
         android:layout_width="0dp"
@@ -35,6 +36,7 @@
         android:textColor="@color/textPrimary"
         android:maxLines="2"
         android:ellipsize="end"
+        android:layout_marginStart="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/imgThumbnail"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +81,6 @@
         app:layout_constraintTop_toBottomOf="@id/tvDuracao"
         app:layout_constraintStart_toStartOf="@id/tvTitulo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginTop="4dp"
         tools:text="Podcast #1228 Inteligência Ltda" />
 

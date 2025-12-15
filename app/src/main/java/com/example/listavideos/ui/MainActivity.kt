@@ -23,58 +23,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var db: VideoDatabase
     private lateinit var launcherCadastro: ActivityResultLauncher<Intent>
 
-    // Dados iniciais (apenas para primeira execução)
-    private val videosIniciais = listOf(
-        Videos(
-            titulo = "MENTIRAM PRA VOCÊ SOBRE INTELIGÊNCIA ARTIFICIAL",
-            canal = "Flow PodCast",
-            duracao = "04:40:54",
-            descricao = "Podcast #1228 Inteligência Ltda",
-            url = "https://www.youtube.com/watch?v=sf4Gxf0LiKo",
-            thumbnailUri = "" // URI vazia - usuário vai adicionar imagem
-        ),
-        Videos(
-            titulo = "Look for what you Love... JUST DON'T!",
-            canal = "Fábio Akita",
-            duracao = "00:15:10",
-            descricao = "RANT: Programação NÃO É Fácil",
-            url = "https://www.youtube.com/watch?v=A2-yU3YjB1U",
-            thumbnailUri = ""
-        ),
-        Videos(
-            titulo = "Como desenvolver boas práticas de programação?",
-            canal = "Fábio Akita",
-            duracao = "00:36:12",
-            descricao = "Boas práticas de programação",
-            url = "https://www.youtube.com/watch?v=GUanHEGlje4",
-            thumbnailUri = ""
-        ),
-        Videos(
-            titulo = "You know nothing about Enterprise. Get to know SAP!",
-            canal = "Fábio Akita",
-            duracao = "00:36:22",
-            descricao = "Enterprise / SAP",
-            url = "https://www.youtube.com/watch?v=FXhcfJnlD2k",
-            thumbnailUri = ""
-        ),
-        Videos(
-            titulo = "FÁBIO AKITA. Comece pelo básico. Fora da Norma Podcast",
-            canal = "Fora da Norma",
-            duracao = "01:07:19",
-            descricao = "Entrevista no podcast Fora da Norma",
-            url = "https://www.youtube.com/watch?v=C3tiSE1QJQ4",
-            thumbnailUri = ""
-        ),
-        Videos(
-            titulo = "Basic Knowledge for Beginners in Programming.",
-            canal = "Fábio Akita",
-            duracao = "00:21:08",
-            descricao = "Vídeo para iniciantes em programação",
-            url = "https://www.youtube.com/watch?v=sx4hAHhO9CY",
-            thumbnailUri = ""
-        )
-    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -132,13 +80,6 @@ class MainActivity : AppCompatActivity() {
             try {
                 // Verificar se é a primeira execução (banco vazio)
                 val totalVideos = db.videoDao().listarTodos().size
-
-                if (totalVideos == 0) {
-                    // Inserir vídeos iniciais (sem thumbnail)
-                    videosIniciais.forEach { video ->
-                        db.videoDao().inserir(video)
-                    }
-                }
 
                 // Carregar todos os vídeos
                 val videos = db.videoDao().listarTodos()
