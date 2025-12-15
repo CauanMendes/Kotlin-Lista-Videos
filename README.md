@@ -13,6 +13,7 @@ O aplicativo utiliza **tema escuro e tema claro**, proporcionando uma interface 
 - Navegação entre telas usando **Intent**
 - Tema escuro e claro  
 - Interface responsiva e organizada
+- Dados mantidos mesmo após fechar o aplicativo - **Room**
 
 ---
 
@@ -64,7 +65,7 @@ O aplicativo utiliza **tema escuro e tema claro**, proporcionando uma interface 
 
 <p align="center">
   <a href="https://www.youtube.com/shorts/WLSIbPwhQtU">
-    <img src="https://img.youtube.com/vi/GG-kKUkdDJE/hqdefault.jpg" alt="Demonstração do projeto no YouTube" width="400">
+    <img src="https://img.youtube.com/vi/WLSIbPwhQtU/hqdefault.jpg" alt="Demonstração do projeto no YouTube" width="400">
   </a>
 </p>
 
