@@ -2,4 +2,50 @@
     <string name="titulo">Best Videos with Fábio Akita</string>
     <string name="btnvoltar">Back</string>
     <string name="btnassistir">watch on youtube</string>
+
+    <!-- App Name -->
+    <string name="app_name">Video List</string>
+
+    <!-- Video Registration -->
+    <string name="thumbnail_video">Video thumbnail</string>
+    <string name="clique_para_selecionar_imagem">Click to select image</string>
+
+    <!-- Field Labels -->
+    <string name="titulo_video">Video Title</string>
+    <string name="canal">Channel</string>
+    <string name="duracao">Duration</string>
+    <string name="url_video">Video URL</string>
+    <string name="descricao">Description</string>
+
+    <!-- Placeholders/Hints -->
+    <string name="hint_titulo">Enter video title</string>
+    <string name="hint_canal">Enter channel name</string>
+    <string name="hint_duracao">Ex: 10:30</string>
+    <string name="hint_url">https://www.youtube.com/watch?v=...</string>
+    <string name="hint_descricao">Enter video description</string>
+
+    <!-- Buttons -->
+    <string name="salvar_video">Save Video</string>
+    <string name="voltar">Back</string>
+    <string name="assistir">Watch</string>
+    <string name="compartilhar">Share</string>
+    <string name="favoritar">Favorite</string>
+
+    <!-- Messages -->
+    <string name="msg_sucesso">Video saved successfully!</string>
+    <string name="msg_erro">Error saving video</string>
+    <string name="msg_selecione_imagem">Select an image for the thumbnail</string>
+    <string name="msg_campos_obrigatorios">Fill in all fields</string>
+    <string name="msg_lista_vazia">No videos registered</string>
+
+    <!-- Search -->
+    <string name="buscar_videos">Search videos...</string>
+
+    <!-- Actions -->
+    <string name="abrir_video">Opening video...</string>
+    <string name="compartilhando_video">Sharing video...</string>
+    <string name="video_favoritado">Video favorited!</string>
+
+    <!-- Sharing -->
+    <string name="compartilhar_video">Share video</string>
 </resources>

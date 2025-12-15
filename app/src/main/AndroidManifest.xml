@@ -16,6 +16,9 @@
             android:name=".ui.DetalhesActivity" />
 
         <activity
+            android:name=".ui.CadastroVideoActivity" />
+
+        <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>

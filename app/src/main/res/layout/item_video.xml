@@ -1,63 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp"
-    android:background="@color/itemBackground">
+    android:padding="12dp"
+    android:background="@color/itemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
+    <!-- Thumbnail do vídeo -->
     <ImageView
         android:id="@+id/imgThumbnail"
-        android:layout_width="140dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="90dp"
         android:src="@drawable/ic_launcher_foreground"
         android:scaleType="centerCrop"
-        android:layout_marginEnd="12dp"
-        android:contentDescription="Thumbnail do vídeo" />
+        android:background="@color/itemBackground"
+        android:contentDescription="Thumbnail do vídeo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="12dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:text="Título do Vídeo"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgThumbnail"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="MENTIRAM PRA VOCÊ SOBRE INTELIGÊNCIA ARTIFICIAL" />
 
-        <TextView
-            android:id="@+id/tvTitulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Título do Vídeo"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/textPrimary"
-            android:maxLines="2"
-            android:ellipsize="end" />
+    <!-- Canal -->
+    <TextView
+        android:id="@+id/tvCanal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fábio Akita"
+        android:textSize="14sp"
+        android:textColor="@color/textSecondary"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+        app:layout_constraintStart_toStartOf="@id/tvTitulo"
+        android:layout_marginTop="4dp"
+        tools:text="Flow Podcast" />
 
-        <TextView
-            android:id="@+id/tvCanal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fábio Akita"
-            android:textSize="14sp"
-            android:textColor="@color/textSecondary"
-            android:layout_marginTop="2dp" />
+    <!-- Duração -->
+    <TextView
+        android:id="@+id/tvDuracao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12:34"
+        android:textSize="13sp"
+        android:textColor="@color/textSecondary"
+        app:layout_constraintTop_toBottomOf="@id/tvCanal"
+        app:layout_constraintStart_toStartOf="@id/tvCanal"
+        android:layout_marginTop="2dp"
+        tools:text="04:40:54" />
 
-        <TextView
-            android:id="@+id/tvDuracao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12:34"
-            android:textSize="13sp"
-            android:textColor="@color/textSecondary"
-            android:layout_marginTop="1dp" />
+    <!-- Descrição -->
+    <TextView
+        android:id="@+id/tvDescricao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Descrição breve do vídeo..."
+        android:textSize="13sp"
+        android:textColor="@color/textSecondary"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@id/tvDuracao"
+        app:layout_constraintStart_toStartOf="@id/tvTitulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="4dp"
+        tools:text="Podcast #1228 Inteligência Ltda" />
 
-        <TextView
-            android:id="@+id/tvDescricao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descrição breve do vídeo..."
-            android:textSize="13sp"
-            android:textColor="@color/textSecondary"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:layout_marginTop="4dp" />
-    </LinearLayout>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

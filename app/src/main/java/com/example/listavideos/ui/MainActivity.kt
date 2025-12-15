@@ -1,98 +1,199 @@
 package com.example.listavideos.ui
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.listavideos.R
+import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.listavideos.adapter.VideosAdapter
+import com.example.listavideos.data.db.VideoDatabase
 import com.example.listavideos.databinding.ActivityMainBinding
 import com.example.listavideos.model.Videos
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var listaVideos: List<Videos>
+    private lateinit var adapter: VideosAdapter
+    private lateinit var db: VideoDatabase
+    private lateinit var launcherCadastro: ActivityResultLauncher<Intent>
+
+    // Dados iniciais (apenas para primeira execução)
+    private val videosIniciais = listOf(
+        Videos(
+            titulo = "MENTIRAM PRA VOCÊ SOBRE INTELIGÊNCIA ARTIFICIAL",
+            canal = "Flow PodCast",
+            duracao = "04:40:54",
+            descricao = "Podcast #1228 Inteligência Ltda",
+            url = "https://www.youtube.com/watch?v=sf4Gxf0LiKo",
+            thumbnailUri = "" // URI vazia - usuário vai adicionar imagem
+        ),
+        Videos(
+            titulo = "Look for what you Love... JUST DON'T!",
+            canal = "Fábio Akita",
+            duracao = "00:15:10",
+            descricao = "RANT: Programação NÃO É Fácil",
+            url = "https://www.youtube.com/watch?v=A2-yU3YjB1U",
+            thumbnailUri = ""
+        ),
+        Videos(
+            titulo = "Como desenvolver boas práticas de programação?",
+            canal = "Fábio Akita",
+            duracao = "00:36:12",
+            descricao = "Boas práticas de programação",
+            url = "https://www.youtube.com/watch?v=GUanHEGlje4",
+            thumbnailUri = ""
+        ),
+        Videos(
+            titulo = "You know nothing about Enterprise. Get to know SAP!",
+            canal = "Fábio Akita",
+            duracao = "00:36:22",
+            descricao = "Enterprise / SAP",
+            url = "https://www.youtube.com/watch?v=FXhcfJnlD2k",
+            thumbnailUri = ""
+        ),
+        Videos(
+            titulo = "FÁBIO AKITA. Comece pelo básico. Fora da Norma Podcast",
+            canal = "Fora da Norma",
+            duracao = "01:07:19",
+            descricao = "Entrevista no podcast Fora da Norma",
+            url = "https://www.youtube.com/watch?v=C3tiSE1QJQ4",
+            thumbnailUri = ""
+        ),
+        Videos(
+            titulo = "Basic Knowledge for Beginners in Programming.",
+            canal = "Fábio Akita",
+            duracao = "00:21:08",
+            descricao = "Vídeo para iniciantes em programação",
+            url = "https://www.youtube.com/watch?v=sx4hAHhO9CY",
+            thumbnailUri = ""
+        )
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        loadData()
-        setupViews()
+        db = VideoDatabase.getInstance(this)
+        setupRecyclerView()
         setupListeners()
+        setupActivityLauncher()
+        carregarVideos()
     }
 
-    private fun loadData() {
-        listaVideos = listOf(
-            Videos(
-                thumbnail = R.drawable.thumb1,
-                titulo = "MENTIRAM PRA VOCÊ SOBRE INTELIGÊNCIA ARTIFICIAL",
-                canal = "Flow PodCast",
-                duracao = "04:40:54",
-                descricao = "Podcast #1228 Inteligência Ltda",
-                url = "https://www.youtube.com/watch?v=sf4Gxf0LiKo"
-            ),
-            Videos(
-                thumbnail = R.drawable.thumb2,
-                titulo = "Look for what you Love... JUST DON'T!",
-                canal = "Fábio Akita",
-                duracao = "00:15:10",
-                descricao = "RANT: Programação NÃO É Fácil",
-                url = "https://www.youtube.com/watch?v=A2-yU3YjB1U"
-            ),
-            Videos(
-                thumbnail = R.drawable.thumb3,
-                titulo = "Como desenvolver boas práticas de programação?",
-                canal = "Fábio Akita",
-                duracao = "00:36:12",
-                descricao = "Boas práticas de programação",
-                url = "https://www.youtube.com/watch?v=GUanHEGlje4"
-            ),
-            Videos(
-                thumbnail = R.drawable.thumb4,
-                titulo = "You know nothing about Enterprise. Get to know SAP!",
-                canal = "Fábio Akita",
-                duracao = "00:36:22",
-                descricao = "Enterprise / SAP",
-                url = "https://www.youtube.com/watch?v=FXhcfJnlD2k"
-            ),
-            Videos(
-                thumbnail = R.drawable.thumb5,
-                titulo = "FÁBIO AKITA. Comece pelo básico. Fora da Norma Podcast",
-                canal = "Fora da Norma",
-                duracao = "01:07:19",
-                descricao = "Entrevista no podcast Fora da Norma",
-                url = "https://www.youtube.com/watch?v=C3tiSE1QJQ4"
-            ),
-            Videos(
-                thumbnail = R.drawable.thumb6,
-                titulo = "Basic Knowledge for Beginners in Programming.",
-                canal = "Fábio Akita",
-                duracao = "00:21:08",
-                descricao = "Vídeo para iniciantes em programação",
-                url = "https://www.youtube.com/watch?v=sx4hAHhO9CY"
-            )
+    private fun setupRecyclerView() {
+        adapter = VideosAdapter(
+            videos = emptyList(),
+            onClick = { video ->
+
+                val intent = Intent(this, DetalhesActivity::class.java)
+                intent.putExtra("video", video)
+                startActivity(intent)
+            }
         )
-        // Se quiser, pode ordenar ou filtrar por visualizações se tiver esse dado
-    }
-
-    private fun setupViews() {
-        val adapter = VideosAdapter(this, listaVideos)
-        binding.listViewVideos.adapter = adapter
+        binding.recyclerViewVideos.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewVideos.adapter = adapter
     }
 
     private fun setupListeners() {
-        binding.listViewVideos.setOnItemClickListener { _, _, pos, _ ->
-            val video = listaVideos[pos]
-            Toast.makeText(this, "Vídeo: ${video.titulo}", Toast.LENGTH_SHORT).show()
-            // Opcionalmente, já lançar o vídeo:
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(video.url))
-            startActivity(intent)
+        // Botão flutuante para adicionar vídeo
+        binding.fabAdicionarVideo.setOnClickListener {
+
+            val intent = Intent(this, CadastroVideoActivity::class.java)
+            launcherCadastro.launch(intent)
         }
+
+        // Filtro em tempo real (se tiver EditText no layout)
+        binding.edtBusca?.addTextChangedListener { texto ->
+            filtrarVideos(texto.toString())
+        }
+    }
+
+    private fun setupActivityLauncher() {
+        launcherCadastro = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == RESULT_OK) {
+                // Recarregar lista quando voltar do cadastro
+                carregarVideos()
+                Toast.makeText(this, "Vídeo salvo com sucesso!", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun carregarVideos() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                // Verificar se é a primeira execução (banco vazio)
+                val totalVideos = db.videoDao().listarTodos().size
+
+                if (totalVideos == 0) {
+                    // Inserir vídeos iniciais (sem thumbnail)
+                    videosIniciais.forEach { video ->
+                        db.videoDao().inserir(video)
+                    }
+                }
+
+                // Carregar todos os vídeos
+                val videos = db.videoDao().listarTodos()
+
+                withContext(Dispatchers.Main) {
+                    adapter.updateLista(videos)
+
+                    // Mostrar mensagem se lista estiver vazia
+                    if (videos.isEmpty()) {
+                        binding.tvListaVazia?.visibility = android.view.View.VISIBLE
+                        binding.recyclerViewVideos.visibility = android.view.View.GONE
+                    } else {
+                        binding.tvListaVazia?.visibility = android.view.View.GONE
+                        binding.recyclerViewVideos.visibility = android.view.View.VISIBLE
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Erro ao carregar vídeos: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
+    private fun filtrarVideos(filtro: String) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val videosFiltrados = if (filtro.isBlank()) {
+                    db.videoDao().listarTodos()
+                } else {
+                    db.videoDao().filtrarPorTitulo("%$filtro%")
+                }
+
+                withContext(Dispatchers.Main) {
+                    adapter.updateLista(videosFiltrados)
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Erro ao filtrar vídeos",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Recarregar dados sempre que a activity voltar ao foco
+        carregarVideos()
     }
 }

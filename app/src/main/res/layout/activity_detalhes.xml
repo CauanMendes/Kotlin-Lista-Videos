@@ -1,78 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
     android:padding="24dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Thumbnail do vídeo -->
+    <ImageView
+        android:id="@+id/imgThumbnail"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:background="@color/itemBackground"
+        android:contentDescription="Thumbnail do vídeo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9" />
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:text="Título do vídeo"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@id/imgThumbnail"
+        app:layout_constraintStart_toStartOf="@id/imgThumbnail"
+        app:layout_constraintEnd_toEndOf="@id/imgThumbnail"
+        android:layout_marginTop="24dp" />
 
-        <ImageView
-            android:id="@+id/imgThumbnail"
-            android:layout_width="360dp"
-            android:layout_height="200dp"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="24dp"
-            android:contentDescription="Thumbnail do vídeo" />
+    <!-- Canal -->
+    <TextView
+        android:id="@+id/tvCanal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do Canal"
+        android:textSize="16sp"
+        android:textColor="@color/textSecondary"
+        app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+        app:layout_constraintStart_toStartOf="@id/tvTitulo"
+        android:layout_marginTop="8dp" />
 
-        <TextView
-            android:id="@+id/tvTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Título do vídeo"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/textPrimary"
-            android:layout_marginBottom="8dp" />
+    <!-- Duração -->
+    <TextView
+        android:id="@+id/tvDuracao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10:00"
+        android:textSize="15sp"
+        android:textColor="@color/textSecondary"
+        app:layout_constraintTop_toBottomOf="@id/tvCanal"
+        app:layout_constraintStart_toStartOf="@id/tvCanal"
+        android:layout_marginTop="4dp" />
 
-        <TextView
-            android:id="@+id/tvCanal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nome do Canal"
-            android:textSize="16sp"
-            android:textColor="@color/textSecondary"
-            android:layout_marginBottom="4dp" />
+    <!-- Descrição -->
+    <TextView
+        android:id="@+id/tvDescricao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Descrição do vídeo..."
+        android:textSize="15sp"
+        android:textColor="@color/textSecondary"
+        android:maxLines="10"
+        android:ellipsize="end"
+        app:layout_constraintTop_toBottomOf="@id/tvDuracao"
+        app:layout_constraintStart_toStartOf="@id/imgThumbnail"
+        app:layout_constraintEnd_toEndOf="@id/imgThumbnail"
+        android:layout_marginTop="16dp" />
 
-        <TextView
-            android:id="@+id/tvDuracao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10:00"
-            android:textSize="15sp"
-            android:textColor="@color/textSecondary"
-            android:layout_marginBottom="16dp" />
+    <!-- Botão Assistir -->
+    <Button
+        android:id="@+id/btnAssistir"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btnassistir"
+        android:backgroundTint="@color/itemBackground"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        app:layout_constraintTop_toBottomOf="@id/tvDescricao"
+        app:layout_constraintStart_toStartOf="@id/imgThumbnail"
+        app:layout_constraintEnd_toEndOf="@id/imgThumbnail"
+        android:layout_marginTop="24dp" />
 
-        <TextView
-            android:id="@+id/tvDescricao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descrição do vídeo..."
-            android:textSize="15sp"
-            android:textColor="@color/textSecondary"
-            android:layout_marginBottom="24dp" />
+    <!-- Botão Voltar -->
+    <Button
+        android:id="@+id/btnVoltar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/btnvoltar"
+        android:backgroundTint="@color/itemBackground"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        app:layout_constraintTop_toBottomOf="@id/btnAssistir"
+        app:layout_constraintStart_toStartOf="@id/imgThumbnail"
+        app:layout_constraintEnd_toEndOf="@id/imgThumbnail"
+        android:layout_marginTop="16dp" />
 
-        <Button
-            android:id="@+id/btnAssistir"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btnassistir"
-            android:backgroundTint="@color/itemBackground"
-            android:textStyle="bold"
-            android:textColor="@color/textPrimary"
-            android:layout_marginBottom="16dp" />
-
-        <Button
-            android:id="@+id/btnVoltar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btnvoltar"
-            android:backgroundTint="@color/itemBackground"
-            android:textStyle="bold"
-            android:textColor="@color/textPrimary" />
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

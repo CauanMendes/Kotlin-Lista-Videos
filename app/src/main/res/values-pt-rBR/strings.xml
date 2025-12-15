@@ -3,4 +3,49 @@
     <string name="titulo">Melhores Vídeos com Fábio Akita</string>
     <string name="btnvoltar">Voltar</string>
     <string name="btnassistir">Assistir no youtube</string>
+
+    <string name="app_name">Lista de Vídeos</string>
+
+    <!-- Cadastro de Vídeo -->
+    <string name="thumbnail_video">Thumbnail do vídeo</string>
+    <string name="clique_para_selecionar_imagem">Clique para selecionar imagem</string>
+
+    <!-- Labels dos campos -->
+    <string name="titulo_video">Título do Vídeo</string>
+    <string name="canal">Canal</string>
+    <string name="duracao">Duração</string>
+    <string name="url_video">URL do Vídeo</string>
+    <string name="descricao">Descrição</string>
+
+    <!-- Placeholders/Hints -->
+    <string name="hint_titulo">Digite o título do vídeo</string>
+    <string name="hint_canal">Digite o nome do canal</string>
+    <string name="hint_duracao">Ex: 10:30</string>
+    <string name="hint_url">https://www.youtube.com/watch?v=...</string>
+    <string name="hint_descricao">Digite a descrição do vídeo</string>
+
+    <!-- Botões -->
+    <string name="salvar_video">Salvar Vídeo</string>
+    <string name="voltar">Voltar</string>
+    <string name="assistir">Assistir</string>
+    <string name="compartilhar">Compartilhar</string>
+    <string name="favoritar">Favoritar</string>
+
+    <!-- Mensagens -->
+    <string name="msg_sucesso">Vídeo salvo com sucesso!</string>
+    <string name="msg_erro">Erro ao salvar vídeo</string>
+    <string name="msg_selecione_imagem">Selecione uma imagem para o thumbnail</string>
+    <string name="msg_campos_obrigatorios">Preencha todos os campos</string>
+    <string name="msg_lista_vazia">Nenhum vídeo cadastrado</string>
+
+    <!-- Busca -->
+    <string name="buscar_videos">Buscar vídeos...</string>
+
+    <!-- Ações -->
+    <string name="abrir_video">Abrindo vídeo...</string>
+    <string name="compartilhando_video">Compartilhando vídeo...</string>
+    <string name="video_favoritado">Vídeo favoritado!</string>
+
+    <!-- Compartilhamento -->
+    <string name="compartilhar_video">Compartilhar vídeo</string>
 </resources>
